@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>은미의 게시판</title>
+<title>은미 게시판</title>
 </head>
 <body>
+<%
+	session.invalidate();
+
+%>
 	<script>
 		location.href = 'main.jsp';
 	</script>

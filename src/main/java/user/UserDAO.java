@@ -17,15 +17,16 @@ public class UserDAO {
 			String dbURL = "jdbc:oracle:thin:@localhost:1521:xe";
 			String dbID = "emcha";
 			String dbPassword = "0808";
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+			   Class.forName("oracle.jdbc.driver.OracleDriver");
+			   conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			  } catch (Exception e) {
+			   e.printStackTrace();
+			  }
+			 }
+
 	
 	public int login(String userID, String userPassword) {
-		String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
+		   String SQL = "SELECT userPassword FROM EMCHA WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
@@ -43,15 +44,15 @@ public class UserDAO {
 		return -2; // 데이터베이스 오류
 	}
 	
-	public int join(User user) {
-		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?)";
+	public int join(User emcha) {
+		String SQL = "INSERT INTO emcha VALUES (?, ?, ?, ?, ?)";
 		try {
             pstmt = conn.prepareStatement(SQL);
-            pstmt.setString(1, user.getUserID());
-            pstmt.setString(2, user.getUserPassword());
-            pstmt.setString(3, user.getUserName());
-            pstmt.setString(4, user.getUserGender());
-            pstmt.setString(5, user.getUserEmail());
+            pstmt.setString(1, emcha.getUserID());
+            pstmt.setString(2, emcha.getUserPassword());
+            pstmt.setString(3, emcha.getUserName());
+            pstmt.setString(4, emcha.getUserGender());
+            pstmt.setString(5, emcha.getUserEmail());
             return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
